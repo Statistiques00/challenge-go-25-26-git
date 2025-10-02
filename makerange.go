@@ -1,0 +1,13 @@
+package student
+
+func MakeRange(min, max int) []int {
+	if min >= max {
+		return nil
+	}
+	size := max - min
+	res := make([]int, size)
+	for i := 0; i < size; i++ {
+		res[i] = min + i
+	}
+	return res
+}

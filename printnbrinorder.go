@@ -1,0 +1,27 @@
+package student
+
+import "github.com/01-edu/z01"
+
+func PrintNbrInOrder(n int) {
+	if n == 0 {
+		z01.PrintRune('0')
+		return
+	}
+	digits := []int{}
+	for n > 0 {
+		digits = append(digits, n%10)
+		n /= 10
+	}
+	for i := 0; i < len(digits); i++ {
+		minIdx := i
+		for j := i + 1; j < len(digits); j++ {
+			if digits[j] < digits[minIdx] {
+				minIdx = j
+			}
+		}
+		digits[i], digits[minIdx] = digits[minIdx], digits[i]
+	}
+	for _, d := range digits {
+		z01.PrintRune(rune(d + '0'))
+	}
+}
